@@ -8,11 +8,10 @@ on:
   workflow_dispatch:
 
 jobs:
-
-  #runs-on: ubuntu-20.04
-  runs-on: self-hosted
   
   Cleanup-Old-Releases:
+    #runs-on: ubuntu-20.04
+    runs-on: self-hosted
     if: github.event.repository.owner.id == github.event.sender.id
     steps:  
     - name: Delete Older Releases
@@ -24,6 +23,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   Cleanup-Old-Artifacts:
+    #runs-on: ubuntu-20.04
+    runs-on: self-hosted
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
     - name: Cleanup Old Action Artifacts
@@ -33,6 +34,8 @@ jobs:
         expire-in: 14d
         
   Cleanup-Workflow-Logs:
+    #runs-on: ubuntu-20.04
+    runs-on: self-hosted
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Cleanup Workflow Logs
@@ -43,6 +46,8 @@ jobs:
           retain_days: 14
           
   build:
+    #runs-on: ubuntu-20.04
+    runs-on: self-hosted
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
