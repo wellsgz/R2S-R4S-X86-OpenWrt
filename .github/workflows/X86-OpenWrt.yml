@@ -133,6 +133,7 @@ jobs:
         let make_process=$(nproc)+1
         make toolchain/install -j${make_process} V=s
     - name: Compile Openwrt
+      timeout-minutes: 720
       run: |
         df -h
         cd openwrt
